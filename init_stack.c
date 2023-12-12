@@ -59,15 +59,16 @@ void	ft_init_stack(t_stack **a, char **str)
 {
 	int		i;
 	long	num;
+	int		flag = 1;
 
 	if (!str)
 		return ;
 	i = 0;
 	while (str[i])
 	{
-		num = ft_atol(str[i]);
-		if (num > INT_MAX || num < INT_MIN)
-			return ( free_string(str), ft_stack_clear(a), error_handle());
+		num = ft_atol(str[i], &flag);
+		if (flag == 0)
+            return ( free_string(str), ft_stack_clear(a), error_handle());
 		if (check_repetition(*a, (int)num))
 			return ( free_string(str), ft_stack_clear(a), error_handle());
 		fill_stack(a, (int)num);
@@ -75,26 +76,3 @@ void	ft_init_stack(t_stack **a, char **str)
 	}
 	free_string(str);
 }
-
-
-
-/*void	ft_init_stack(t_stack **a, char **str)
-{
-	int		i;
-	long	num;
-	t_stack	*tmp;
-
-	if (!str)
-		return ;
-	i = 0;
-	while (str[i])
-	{
-		num = ft_atoi(str[i]);
-		tmp = (t_stack*)malloc(sizeof(*tmp));
-		tmp->content = num;
-		tmp->next = NULL;
-		ft_stack_add_back(a, tmp);
-		i++;
-	}
-	//free_string(str);
-}*/
