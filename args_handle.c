@@ -1,24 +1,32 @@
 #include "push_swap.h"
 
-long	ft_atol(const char *str)
+int	ft_atol(char *str, int *flag)
 {
-	long	sign;
-	long	result;
-	long	i;
+	unsigned int		i;
+	int					sign;
+	unsigned long int	number;
 
-	sign = 1;
-	result = 0;
 	i = 0;
-	while (((str[i] >= 9 && str[i] <= 13) || str[i] == 32) && str[i])
+	number = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
-	if ((str[i] == '+' || str[i] == '-') && str[i])
-		sign = 1 - 2 * (str[i++] == '-');
-	while ((str[i] >= '0' && str[i] <= '9') && str[i])
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i])
 	{
-		result = 10 * result + (str[i] - '0');
+		number = (str[i] - '0') + (number * 10);
 		i++;
 	}
-	return (sign * result);
+	if ((number > 2147483648 && sign == -1)
+		|| (number > 2147483647 && sign == 1))
+	{
+		*flag = 0;
+		return (0);
+	}
+	return (number * sign);
 }
 
 char	**parse_args(int arg_count, char **args)
