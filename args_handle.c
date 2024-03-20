@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   args_handle.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohamoha <mohamoha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/11 20:43:25 by mohamoha          #+#    #+#             */
+/*   Updated: 2023/12/12 21:11:55 by mohamoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_atol(char *str, int *flag)
@@ -31,10 +43,10 @@ int	ft_atol(char *str, int *flag)
 
 char	**parse_args(int arg_count, char **args)
 {
-	int i;
-	char *arg;
-	char *tmp;
-	char **split;
+	int		i;
+	char	*arg;
+	char	*tmp;
+	char	**split;
 
 	if (!arg_count || !args)
 		ft_putstr_fd(ERROR_ARGS, 2);
@@ -49,45 +61,45 @@ char	**parse_args(int arg_count, char **args)
 		i++;
 	}
 	split = ft_split(arg, ' ');
-	check_input(split);
 	free(arg);
+	check_input(split);
 	return (split);
 }
 
-static int is_valid_number(char *str)
+static int	is_valid_number(char *str)
 {
-    if (*str == '-' || *str == '+')
-        str++;
-
-    if (!(*str >= '0' && *str <= '9'))
-        return (1);
-    while (*str)
-    {
-        if (!(*str >= '0' && *str <= '9'))
-            return (1);
-        str++;
-    }
-    return (0);
+	if (*str == '-' || *str == '+')
+		str++;
+	if (!(*str >= '0' && *str <= '9'))
+		return (1);
+	while (*str)
+	{
+		if (!(*str >= '0' && *str <= '9'))
+			return (1);
+		str++;
+	}
+	return (0);
 }
 
-int check_input(char **av)
+int	check_input(char **av)
 {
-	int i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	if (av[0] == NULL)
 		error_handle();
-	while  (av[i])
+	while (av[i])
 	{
-        if (is_valid_number(av[i]))
+		if (is_valid_number(av[i]))
 		{
 			free_string(av);
-            error_handle();
+			error_handle();
 		}
 		i++;
-    }
+	}
 	return (1);
 }
+
 int	check_repetition(t_stack *a, int nbr)
 {
 	if (a == NULL)

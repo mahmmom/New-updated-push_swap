@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_four_five.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohamoha <mohamoha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/11 20:44:12 by mohamoha          #+#    #+#             */
+/*   Updated: 2023/12/12 21:10:17 by mohamoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	min_of_stack(t_stack **stack)
@@ -41,12 +53,11 @@ void	sort_4_5(t_stack **a, t_stack **b)
 
 	head = *a;
 	len_sa = ft_stack_size(head);
-	current_index(*a);
-	min_of_stack(a);
 	while (len_sa > 3 && !sorted(*a))
 	{
-		pb(a, b, false);
+		current_index(*a);
 		min_of_stack(a);
+		pb(a, b, false);
 		len_sa--;
 	}
 	if (!sorted(*a))

@@ -6,7 +6,7 @@
 /*   By: mohamoha <mohamoha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 20:16:43 by mohamoha          #+#    #+#             */
-/*   Updated: 2023/12/09 22:24:11 by mohamoha         ###   ########.fr       */
+/*   Updated: 2024/02/25 21:49:10 by mohamoha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_stack	*find_min_2(t_stack **stack)
 	head = *stack;
 	while (head != NULL)
 	{
-		if(head->index == -1 && (flag == 0 || (temp->content > head->content)))
+		if (head->index == -1 && (flag == 0 || (temp->content > head->content)))
 		{
 			temp = head;
 			flag = 1;
@@ -33,61 +33,30 @@ t_stack	*find_min_2(t_stack **stack)
 	return (temp);
 }
 
-/*void	assign_index(t_stack **stack)
+void	assign_index(t_stack **stack)
 {
-	t_stack	*head;
-	int		i;
-	int		j;
+	t_stack	*current;
 	int		index;
 
-	index = 0;
-	i = 0;
-	head = *stack;
-	while(i < ft_stack_size(head))
-	{
-		j = 0;
-		while (j < ft_stack_size(head))
-		{
-			if (head->index == -1)
-			{
-				head = find_min_2(stack);
-				head->index = index;
-				index++;
-				printf("Loop min = %d\n", head->content);
-			}
-			j++;
-		}
-		i++;
-	}
-}*/
-
-void assign_index(t_stack **stack)
-{
-    t_stack	*current;
-    int		index;
-	
 	current = find_min_2(stack);
 	index = 0;
 	while (current)
-    {
+	{
 		current->index = index++;
-        current = find_min_2(stack);
-    }
+		current = find_min_2(stack);
+	}
 }
 
-void radix_sort(t_stack **stack_a, t_stack **stack_b)
+void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	int size;
-	int max_bits;
-	int i;
-	int j;
-	
+	int	size;
+	int	max_bits;
+	int	i;
+	int	j;
+
 	size = ft_stack_size(*stack_a);
-	//printf("SIZEE = %d\n", size);
 	max_bits = get_max_bits(*stack_a);
-	//printf("Maxbits = %d\n", max_bits);
 	assign_index(stack_a);
-	//print_index(*stack_a);
 	i = 0;
 	while (i < max_bits)
 	{

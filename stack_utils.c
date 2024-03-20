@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohamoha <mohamoha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/11 20:44:20 by mohamoha          #+#    #+#             */
+/*   Updated: 2023/12/11 20:57:49 by mohamoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ft_stack_size(t_stack *lst)
@@ -9,7 +21,7 @@ int	ft_stack_size(t_stack *lst)
 	temp = lst;
 	while (temp != NULL)
 	{
-		temp = temp -> next;
+		temp = temp->next;
 		count++;
 	}
 	return (count);
@@ -55,9 +67,9 @@ t_stack	*find_min(t_stack *stack)
 	return (min);
 }
 
-void ft_stack_add_back(t_stack **lst, t_stack *newnode)
+void	ft_stack_add_back(t_stack **lst, t_stack *newnode)
 {
-	t_stack *current;
+	t_stack	*current;
 
 	if (!*lst)
 	{
@@ -77,7 +89,7 @@ void	ft_stack_clear(t_stack **lst)
 	t_stack	*ptr;
 	t_stack	*temp;
 
-	if (!lst )
+	if (!lst)
 		return ;
 	ptr = *lst;
 	while (ptr != NULL)

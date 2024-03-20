@@ -1,26 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohamoha <mohamoha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/11 20:43:35 by mohamoha          #+#    #+#             */
+/*   Updated: 2023/12/12 21:20:35 by mohamoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-#include <stdlib.h>
 
-void	print_stack(t_stack	*a)
-{
-	while ((a) != NULL)
-	{
-		printf("[%ld]\n", (long)(a)->content);
-
-		(a) = (a)->next;
-	}
-}
-void	print_index(t_stack	*a)
-{
-	while ((a) != NULL)
-	{
-		printf("[%ld]\n", (long)(a)->index);
-
-		(a) = (a)->next;
-	}
-}
-
-static t_stack	*find_last(t_stack	*head)
+static t_stack	*find_last(t_stack *head)
 {
 	if (!head)
 		return (NULL);
@@ -35,10 +27,10 @@ static void	fill_stack(t_stack **a, int num)
 	t_stack	*last_node;
 
 	if (!a)
-		return;
+		return ;
 	tmp = malloc(sizeof(t_stack));
 	if (!tmp)
-		return;
+		return ;
 	tmp->content = num;
 	tmp->index = -1;
 	tmp->next = NULL;
@@ -59,18 +51,19 @@ void	ft_init_stack(t_stack **a, char **str)
 {
 	int		i;
 	long	num;
-	int		flag = 1;
+	int		flag;
 
 	if (!str)
 		return ;
 	i = 0;
+	flag = 1;
 	while (str[i])
 	{
 		num = ft_atol(str[i], &flag);
 		if (flag == 0)
-            return ( free_string(str), ft_stack_clear(a), error_handle());
+			return (free_string(str), ft_stack_clear(a), error_handle());
 		if (check_repetition(*a, (int)num))
-			return ( free_string(str), ft_stack_clear(a), error_handle());
+			return (free_string(str), ft_stack_clear(a), error_handle());
 		fill_stack(a, (int)num);
 		i++;
 	}

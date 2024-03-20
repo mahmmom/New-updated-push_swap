@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rule_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohamoha <mohamoha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/11 20:44:07 by mohamoha          #+#    #+#             */
+/*   Updated: 2023/12/11 20:48:12 by mohamoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void	swap(t_stack	**stack)
+static void	swap(t_stack **stack)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!stack)
-		return;
+		return ;
 	temp = (*stack);
 	(*stack) = (*stack)->next;
 	temp->next = (*stack)->next;
@@ -26,7 +38,7 @@ void	sb(t_stack **b, bool print)
 		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack	**a, t_stack **b, bool print)
+void	ss(t_stack **a, t_stack **b, bool print)
 {
 	sa(a, print);
 	sb(b, print);

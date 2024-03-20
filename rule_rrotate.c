@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rule_rrotate.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mohamoha <mohamoha@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/11 20:44:03 by mohamoha          #+#    #+#             */
+/*   Updated: 2023/12/11 20:48:16 by mohamoha         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static void	r_rotate(t_stack	**stack)
+static void	r_rotate(t_stack **stack)
 {
-	t_stack *temp;
-	t_stack *head;
+	t_stack	*temp;
+	t_stack	*head;
 
 	if (!stack)
-		return;
+		return ;
 	head = (*stack);
 	while (head->next != NULL)
 	{
@@ -32,7 +44,7 @@ void	rrb(t_stack **b, bool print)
 		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack	**a, t_stack **b, bool print)
+void	rrr(t_stack **a, t_stack **b, bool print)
 {
 	rra(a, false);
 	rrb(b, false);
